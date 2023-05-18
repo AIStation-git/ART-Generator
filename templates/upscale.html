@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Upscale Image</title>
+  </head>
+  <body>
+    <form
+      method="POST"
+      action="{% url 'upscale_image' %}"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+      <input type="file" name="image" />
+      <label for="width">Width:</label>
+      <input type="number" name="width" id="width" value="1024" />
+      <button type="submit">Upscale Image</button>
+    </form>
+
+    {% if upscaled_image %}
+    <img src="{{ upscaled_image.image.url }}" alt="Upscaled Image" />
+    {% endif %}
+  </body>
+</html>

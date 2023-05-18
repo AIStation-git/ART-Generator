@@ -25,6 +25,7 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
 
         data['email'] = self.user.email
         data['created_at'] = self.user.created_at
+        data['id'] = self.user.id
         token = Token.objects.get(user=self.user)
         token_to_str = str(token)
         token_to_json = json.dumps(token_to_str)
@@ -32,3 +33,15 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         data['token'] = token_to_load
         data['message'] = 'sucessfull'
         return data
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'email', 'credit']    
+
+
+
+class BuyCreditSerializer(serializers.Serializer):
+    num_credits = serializers.IntegerField()
+

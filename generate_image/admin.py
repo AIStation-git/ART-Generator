@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import GeneratedImage, Like
+from .models import GeneratedImage, Like, UpscaledImage
 # Register your models here.
 @admin.register(GeneratedImage)
 class GeneratedImageAdmin(admin.ModelAdmin):
@@ -8,4 +8,6 @@ class GeneratedImageAdmin(admin.ModelAdmin):
     search_fields = ('text_input',)
 
 admin.site.register(Like)
+admin.site.register(UpscaledImage)
+
 

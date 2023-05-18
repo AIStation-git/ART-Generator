@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+          }
+          
+          label {
+            font-size: 18px;
+            margin-bottom: 10px;
+          }
+          
+          input[type="email"], input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+          }
+          
+          input[type="email"]::placeholder, input[type="text"]::placeholder {
+            font-size: 16px;
+            color: #ccc;
+          }
+          
+          button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+          
+          button[type="submit"]:hover {
+            background-color: #3e8e41;
+          }
+
+          .messages {
+            margin: 10px 0;
+            padding: 10px;
+            list-style: none;
+          }
+          
+          .messages li {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+          }
+          
+          .messages li.success {
+            background-color: #8BC34A;
+            color: #fff;
+          }
+          
+          .messages li.error {
+            background-color: #F44336;
+            color: #fff;
+          }
+          
+          .messages li.warning {
+            background-color: #FFC107;
+            color: #fff;
+          }
+          
+          .messages li.info {
+            background-color: #2196F3;
+            color: #fff;
+          }
+          
+          
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<head>
+  
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <form method="post">
+    {% csrf_token %}
+    <h1>Dashboad for Update Credit</h1>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+    {{ form.as_p }}
+
+
+    
+    <button type="submit">Update Credit</button>
+  </form>
+  
+  <script>
+    document.getElementById("email").placeholder = "Email";
+    document.getElementById("credit").placeholder = "Credit";
+  </script>
+  
+</body>
+</html>
